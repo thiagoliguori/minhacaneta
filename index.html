@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>minhacaneta · Compare o preço do seu tratamento GLP-1</title>
+  <meta name="description" content="Compare preços de medicamentos GLP-1 no Brasil: Ozempic, Wegovy, Mounjaro, Rybelsus e similares nacionais. Custo mensal por dose, direto das drogarias parceiras.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Barra de aviso -->
+  <div class="topbar">
+    Medicamentos sob prescrição médica. Preços de referência, confirme na farmácia.
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="#">minha<span>caneta</span></a>
+      <nav class="nav">
+        <a href="#comparar">Comparar</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#faq">Dúvidas</a>
+      </nav>
+      <a class="btn btn-dark btn-sm" href="#comparar">Ver preços</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Comparador independente de preços</p>
+        <h1>O mesmo GLP-1 pode custar <em>muito menos</em>.</h1>
+        <p class="hero-sub">Compare o custo mensal real de Ozempic, Wegovy, Mounjaro, Rybelsus e dos similares nacionais, e compre direto nas drogarias e programas oficiais dos fabricantes.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#comparar">Comparar preços agora</a>
+          <a class="btn btn-ghost" href="#como-funciona">Como calculamos</a>
+        </div>
+        <p class="hero-note">Sem cadastro. Sem venda de dados. Você compra direto no parceiro.</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob" aria-hidden="true"></div>
+        <div class="hero-photo">
+          <img src="img/hero-ia.jpg" alt="Mulher sorrindo em um ambiente tranquilo e acolhedor" loading="eager">
+        </div>
+        <div class="hero-card hero-card-1" aria-hidden="true">
+          <span class="hero-pill">Semaglutida</span>
+          <strong>a partir de <span id="hero-price-sema">R$ …</span>/mês</strong>
+        </div>
+        <div class="hero-card hero-card-2" aria-hidden="true">
+          <span class="hero-pill">Tirzepatida</span>
+          <strong>a partir de <span id="hero-price-tirze">R$ …</span>/mês</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faixa de credibilidade -->
+  <section class="trust">
+    <div class="container trust-inner">
+      <div class="trust-stat">
+        <strong id="stat-medicamentos">7</strong>
+        <span>medicamentos comparados</span>
+      </div>
+      <div class="trust-stat">
+        <strong id="stat-programas">3</strong>
+        <span>programas de desconto oficiais</span>
+      </div>
+      <div class="trust-stat">
+        <strong>Custo/mês</strong>
+        <span>calculado por dose, não por caixa</span>
+      </div>
+      <div class="trust-stat">
+        <strong>0</strong>
+        <span>cadastro ou venda de dados</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filtros + Grid -->
+  <main class="section" id="comparar">
+    <div class="container">
+      <div class="section-head">
+        <h2>Compare os tratamentos</h2>
+        <p>Preços convertidos para <strong>custo mensal estimado</strong> na dose selecionada, para comparar de forma justa entre marcas e apresentações.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filtros">
+        <div class="filter-group" id="filter-indicacao">
+          <button class="chip active" data-filter="todos">Todos</button>
+          <button class="chip" data-filter="obesidade">Obesidade / Sobrepeso</button>
+          <button class="chip" data-filter="diabetes">Diabetes tipo 2</button>
+        </div>
+        <div class="filter-group" id="filter-via">
+          <button class="chip active" data-via="todas">Todas as vias</button>
+          <button class="chip" data-via="injetavel">Injeção semanal</button>
+          <button class="chip" data-via="oral">Oral diário</button>
+        </div>
+        <div class="sort-group">
+          <label for="sort">Ordenar:</label>
+          <select id="sort">
+            <option value="preco">Menor custo mensal</option>
+            <option value="nome">Nome (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid" id="product-grid"><!-- cards via JS --></div>
+
+      <p class="grid-disclaimer">Preços de referência coletados em drogarias online. Podem variar por região, estoque e programas de desconto. Última atualização: <span id="data-atualizacao">jul. 2026</span>.</p>
+    </div>
+  </main>
+
+  <!-- Como funciona -->
+  <section class="section section-alt" id="como-funciona">
+    <div class="container">
+      <div class="section-head">
+        <h2>Como calculamos o custo mensal</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">1</span>
+          <h3>Coletamos os preços</h3>
+          <p>Pesquisamos os preços de cada apresentação nas principais drogarias online do Brasil e nos programas oficiais dos fabricantes.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">2</span>
+          <h3>Convertemos por dose</h3>
+          <p>Cada caneta ou caixa cobre um número diferente de semanas. Dividimos o preço pelo tempo de tratamento que ela cobre.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">3</span>
+          <h3>Você compra no parceiro</h3>
+          <p>Ao escolher, você é direcionado para a drogaria ou o programa oficial do fabricante, com a receita do seu médico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estilo de vida -->
+  <section class="section section-alt lifestyle">
+    <div class="container">
+      <div class="section-head lifestyle-head">
+        <p class="eyebrow">Tratamento é jornada, não só remédio</p>
+        <h2>Cuidado que cabe no seu dia, e no seu bolso</h2>
+        <p>O GLP-1 funciona melhor junto com alimentação, movimento e acompanhamento médico. Nós ajudamos na parte do preço para o tratamento caber na sua rotina, do começo ao fim.</p>
+      </div>
+      <div class="lifestyle-grid">
+        <figure class="lifestyle-card">
+          <img src="img/vida-alimentacao-ia.jpg" alt="Mãos preparando uma refeição fresca na cozinha" loading="lazy">
+          <figcaption>
+            <strong>Alimentação</strong>
+            <span>Pequenas mudanças no prato potencializam o resultado do tratamento.</span>
+          </figcaption>
+        </figure>
+        <figure class="lifestyle-card">
+          <img src="img/vida-movimento-ia.jpg" alt="Casal caminhando ao ar livre ao entardecer" loading="lazy">
+          <figcaption>
+            <strong>Movimento</strong>
+            <span>Caminhar todo dia já faz diferença no peso e na disposição.</span>
+          </figcaption>
+        </figure>
+        <figure class="lifestyle-card">
+          <img src="img/vida-rotina-ia.jpg" alt="Xícara de café ao lado da janela pela manhã" loading="lazy">
+          <figcaption>
+            <strong>Rotina</strong>
+            <span>Constância no tratamento e no acompanhamento é o que sustenta o resultado.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Receita obrigatória -->
+  <section class="section rx-section">
+    <div class="container rx-banner">
+      <div class="rx-banner-icon">🩺</div>
+      <div>
+        <h2>Consulta médica e receita são obrigatórias</h2>
+        <p>Todos os medicamentos GLP-1 são vendidos <strong>somente sob prescrição médica</strong>. Para comprar, você precisa passar em consulta com um médico, que avaliará se o tratamento é indicado para você e definirá a dose. A receita será <strong>verificada e retida pela farmácia</strong> no momento da compra, inclusive nas compras online, em que a drogaria valida a receita antes de liberar o pedido. Nunca use GLP-1 sem acompanhamento médico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container container-narrow">
+      <div class="section-head">
+        <h2>Dúvidas frequentes</h2>
+      </div>
+      <details class="faq-item">
+        <summary>Preciso de receita médica?</summary>
+        <p>Sim. Todos os GLP-1 exigem prescrição médica e a decisão sobre qual medicamento e dose usar é do seu médico. Este site compara apenas preços e não substitui a consulta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Os similares nacionais são confiáveis?</summary>
+        <p>Ozivy (EMS), Poviztra e Extensior (Eurofarma) contêm semaglutida e são aprovados pela Anvisa. Converse com seu médico sobre a opção mais adequada para o seu caso.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Por que o custo mensal varia com a dose?</summary>
+        <p>O tratamento com GLP-1 começa em doses baixas e aumenta gradualmente. Doses maiores geralmente custam mais por mês, por isso mostramos o custo em cada etapa.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Vocês vendem medicamentos?</summary>
+        <p>Não. Somos um comparador independente. A compra acontece no site da drogaria ou no programa oficial do fabricante, com sua receita.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-brand">minha<span>caneta</span></p>
+      <p class="footer-legal">Este site tem caráter exclusivamente informativo e não substitui consulta, diagnóstico ou prescrição médica. Medicamentos GLP-1 são vendidos apenas sob prescrição. Preços de referência sujeitos a alteração pelas drogarias e fabricantes. Em caso de dúvida, procure seu médico ou farmacêutico.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Fechar">&times;</button>
+      <div class="modal-body" id="modal-body"><!-- via JS --></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="illustrations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
