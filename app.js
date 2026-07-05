@@ -134,6 +134,7 @@ function renderDose(p, idx, animate = true) {
 function openModal(id) {
   const p = PRODUTOS.find((x) => x.id === id);
   if (!p) return;
+  if (window.track) window.track("abrir_produto", { produto: p.nome });
 
   const parceiros = p.parceiros
     .map(
@@ -201,10 +202,20 @@ function openModal(id) {
   const range = document.getElementById("dose-range");
   renderDose(p, 0, false);
   range.addEventListener("input", () => renderDose(p, parseInt(range.value, 10)));
+  range.addEventListener("change", () => {
+    if (window.track) window.track("usar_seletor_dose", { produto: p.nome, dose: p.doses[parseInt(range.value, 10)]?.dose });
+  });
   document.querySelectorAll(".dose-tick").forEach((t) => {
     t.addEventListener("click", () => {
       range.value = t.dataset.idx;
       renderDose(p, parseInt(t.dataset.idx, 10));
+    });
+  });
+
+  // clique em "Comprar" (parceiro) — o evento mais importante: saída para a drogaria/programa
+  modalBody.querySelectorAll(".partner").forEach((el, i) => {
+    el.addEventListener("click", () => {
+      if (window.track) window.track("clique_comprar", { produto: p.nome, parceiro: p.parceiros[i]?.nome, tipo: p.parceiros[i]?.tipo });
     });
   });
 
@@ -228,6 +239,7 @@ document.querySelectorAll("#filter-indicacao .chip").forEach((chip) => {
     document.querySelectorAll("#filter-indicacao .chip").forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     filtroIndicacao = chip.dataset.filter;
+    if (window.track) window.track("filtro_indicacao", { valor: filtroIndicacao });
     renderGrid();
   });
 });
@@ -236,11 +248,13 @@ document.querySelectorAll("#filter-via .chip").forEach((chip) => {
     document.querySelectorAll("#filter-via .chip").forEach((c) => c.classList.remove("active"));
     chip.classList.add("active");
     filtroVia = chip.dataset.via;
+    if (window.track) window.track("filtro_via", { valor: filtroVia });
     renderGrid();
   });
 });
 document.getElementById("sort").addEventListener("change", (e) => {
   ordenacao = e.target.value;
+  if (window.track) window.track("ordenar", { valor: ordenacao });
   renderGrid();
 });
 
