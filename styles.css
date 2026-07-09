@@ -50,8 +50,11 @@ h1, h2, h3, .logo { font-family: var(--font-serif); font-weight: 500; letter-spa
   border-bottom: 1px solid rgba(32, 28, 23, 0.07);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-.logo { font-size: 22px; text-decoration: none; color: var(--ink); }
-.logo span { font-weight: 600; color: var(--accent); }
+.logo {
+  font-size: 24px; text-decoration: none; color: var(--ink);
+  font-weight: 400; letter-spacing: -0.03em;
+}
+.logo span { font-style: italic; font-weight: 600; color: var(--accent); }
 .nav { display: flex; gap: 28px; }
 .nav a { color: var(--ink-soft); text-decoration: none; font-size: 14.5px; font-weight: 500; }
 .nav a:hover { color: var(--ink); }
@@ -294,7 +297,7 @@ h1, h2, h3, .logo { font-family: var(--font-serif); font-weight: 500; letter-spa
 /* ---------- Footer ---------- */
 .footer { background: var(--ink); color: #b8ad9e; padding: 48px 0; }
 .footer-brand { font-family: var(--font-serif); font-size: 20px; color: #f6f1ea; margin-bottom: 14px; }
-.footer-brand span { color: var(--accent-soft); }
+.footer-brand span { font-style: italic; font-weight: 600; color: var(--accent-soft); }
 .footer-legal { font-size: 12.5px; max-width: 72ch; line-height: 1.7; }
 
 /* ---------- Modal ---------- */
@@ -457,7 +460,9 @@ h1, h2, h3, .logo { font-family: var(--font-serif); font-weight: 500; letter-spa
 
 .partner-list { display: flex; flex-direction: column; gap: 12px; }
 .partner {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center; gap: 18px;
   background: var(--surface);
   border-radius: var(--radius-md);
   padding: 16px 20px;
@@ -469,8 +474,8 @@ h1, h2, h3, .logo { font-family: var(--font-serif); font-weight: 500; letter-spa
 .partner:hover { transform: translateY(-2px); }
 .partner-info strong { font-size: 15.5px; display: block; }
 .partner-info span { font-size: 13px; color: var(--ink-soft); }
-.partner-price { text-align: right; }
-.partner-price strong { font-family: var(--font-serif); font-size: 18px; display: block; white-space: nowrap; }
+.partner-price { text-align: right; min-width: 92px; }
+.partner-price strong { font-family: var(--font-serif); font-size: 18px; display: block; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .partner-price span { font-size: 12px; color: var(--ink-soft); }
 .partner-go {
   flex-shrink: 0;
