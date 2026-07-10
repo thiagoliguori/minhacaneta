@@ -594,12 +594,15 @@ h1, h2, h3, .logo { font-family: var(--font-serif); font-weight: 500; letter-spa
   .trust-stat:nth-child(3) { border-left: none; padding-left: 0; }
   .trust-stat strong { font-size: 26px; }
   .hero-inner { grid-template-columns: 1fr; }
-  .hero { padding-bottom: 56px; }
-  .hero-visual { min-height: 0; margin-top: 8px; }
+  .hero { padding-bottom: 64px; }
+  .hero-visual { min-height: 0; margin-top: 20px; position: relative; }
   .hero-blob { display: none; }
-  .hero-photo { width: 100%; max-width: 420px; aspect-ratio: 5 / 4; }
-  .hero-card { position: static; margin: 10px 0 0; display: inline-flex; }
-  .hero-card-2 { margin-left: 10px; }
+  .hero-photo { width: 86%; max-width: 360px; margin: 0 auto; aspect-ratio: 4 / 5; }
+  /* cards flutuam sobre a foto, como no desktop */
+  .hero-card { padding: 13px 17px; font-size: 13.5px; }
+  .hero-card strong { font-size: 16.5px; }
+  .hero-card-1 { top: 8%; left: 0; }
+  .hero-card-2 { bottom: 8%; right: 0; }
   .steps { grid-template-columns: 1fr; }
   .nav { display: none; }
   .sort-group { margin-left: 0; }
