@@ -130,6 +130,7 @@ const PRODUTOS = [
     badges: ["Nacional"],
     descricao: "A primeira caneta de semaglutida fabricada no Brasil (EMS), aprovada para diabetes tipo 2. Pelo programa Vida + Leve, sai em média por R$ 287/mês nos 3 primeiros meses e R$ 498/caneta depois.",
     doses: [
+      { dose: "0,25-0,5 mg (início)", apresentacao: "Caneta 1,5 mL + agulhas (~4 semanas)", semanas: 4, precoMin: 452, precoMax: 803.44 },
       { dose: "1 mg (manutenção)", apresentacao: "Caneta 3 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 464.80, precoMax: 664.02 }
     ],
     parceiros: [
@@ -154,7 +155,8 @@ const PRODUTOS = [
     badges: ["Nacional"],
     descricao: "Semaglutida licenciada pela Novo Nordisk e produzida pela Eurofarma, aprovada para obesidade e sobrepeso com comorbidades. Pelo programa EuroCuida, a caneta de 0,5 mg sai por R$ 445.",
     doses: [
-      { dose: "0,5 mg (início)", apresentacao: "Caneta 1,5 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 295, precoMax: 967.50 },
+      { dose: "0,25 mg (início)", apresentacao: "Caneta 1,5 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 444.99, precoMax: 819 },
+      { dose: "0,5 mg", apresentacao: "Caneta 1,5 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 295, precoMax: 967.50 },
       { dose: "1 mg", apresentacao: "Caneta 3 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 803.89, precoMax: 1000.28 },
       { dose: "1,7 mg", apresentacao: "Caneta 3 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 1189, precoMax: 1347.91 },
       { dose: "2,4 mg (manutenção)", apresentacao: "Caneta 3 mL + 4 agulhas (4 doses)", semanas: 4, precoMin: 1310.99, precoMax: 1637.39 }
